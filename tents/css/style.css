@@ -1,0 +1,108 @@
+
+html{
+	min-height: 100%;
+	position: relative;
+}
+
+#mainpagecontent{
+	width: 100%;
+	background-color: rgba(255, 255, 255, 1);
+}
+
+#content{
+	padding-top: 80px;
+	padding-bottom: 70px;
+}
+
+
+#content p{
+	font-family: 'Oswald', sans-serif;
+}
+
+#content h1{
+	font-family: 'Rubik Mono One', sans-serif;
+}
+
+#content h5, #content h6{
+font-family: 'Russo One', Arial;
+}
+
+header li :hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+header li .active {
+	background-color: rgba(255, 255, 255 , 0.3);
+	border-radius: 10px;
+}
+
+.navbar-brand {
+	font-weight: bold;
+}
+
+.page-content {
+	padding-top: 30px;
+}
+
+.single-item{
+	border: 1px solid #afafaf;
+	transition: all ease-in-out 0.2s;
+}
+
+.single-item a{
+	text-decoration: none;
+	color: #000;
+}
+
+.card{
+	position: relative;
+}
+
+.single-item .card-footer{
+	display: flex;
+}
+
+.single-item:hover{
+	border-color: rgba(0, 70, 128, 0.8);
+	box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.5);
+	transform: translateY(-10px);
+}
+
+
+.image-div{
+	height: 200px;
+}
+
+.image-div img{
+	max-width: 100%;
+	height: auto;
+}
+
+.edit-fields{
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.company-info{
+	font-family: 'Rubik Mono One', sans-serif;
+	text-align: center;
+	padding-top: 50px;
+}
+
+
+footer{
+	margin-right: 1000px;	
+	min-width: 100%;	
+	position: absolute;	
+	bottom: 0;
+}
+
+footer a{
+	text-decoration: none;
+}
+
+footer .image-footer{
+	width: 30px;
+}
+
+

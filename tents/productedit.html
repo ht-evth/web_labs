@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Редактирование</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Подключаем шрифты -->	
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <script src="js/bootstrap.min.js"></script>
+
+    <header id="header" class="fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a href="index.html" class="navbar-brand">Палатки</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+            aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navContent">
+            <ul class="navbar-nav mr-auto mb-3 mb-lg-0">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">Главная</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="catalog.html" class="nav-link">Каталог</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="productinfo.html" class="nav-link">Подробнее о палатке</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="productedit.html" class="nav-link active">Редактирование</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="pageadmin.html" class="nav-link">Каталог(администрирование)</a>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content">
+      <div class="container">
+        <h1>Измененить описание:</h1>
+
+          <form method="POST">
+		  
+		  
+		    <div class="form-group edit-fields">
+              <label for="chooseFile">Изображение</label>
+              <input name = "imagePath" type="file" class="chooseFile form-control-file" placeholder="Выберите изображение">
+            </div>
+			
+			<div class="form-group edit-fields">
+              <label for="brand">Бренд</label>
+              <select required name="model" type="text" class="form-control" placeholder="Укажите бренд">
+                <option>Higashi</option>
+                <option>Tramp</option>
+                <option>Canadian</option>
+				<option>Husky</option>
+				<option>Normal</option>
+              </select>
+            </div>
+						
+			
+            <div class="form-group edit-fields">
+              <label for="category">Категория</label>
+              <select required name="model" type="text" class="form-control" placeholder="Укажите название модели">
+                <option>Зима</option>
+                <option>Лето</option>
+                <option>Весна-осень</option>
+				<option>ультралёгкая</option>
+				<option>Комфорт</option>
+              </select>
+            </div>
+
+            <div class="form-group edit-fields">
+              <label for="cost">Цена</label>
+              <input required name="cost" type="number" class="form-control" placeholder="Укажите цену">
+            </div>
+			
+			
+			<div class="form-group edit-fields">
+              <label for="places">Кол-во мест</label>
+              <input required name="places" type="number" class="form-control" placeholder="Укажите кол-во мест">
+            </div>
+			
+			<div class="form-group edit-fields">
+              <label for="weight">Вес в кг</label>
+              <input required name="weight" type="float-sm-left" class="form-control" placeholder="Укажите вес">
+            </div>
+			
+			<div class="form-group edit-fields">
+              <label for="doors">Кол-во входов</label>
+              <input required name="weight" type="number" class="form-control" placeholder="Укажите кол-во входов">
+            </div>
+			
+			<div class="form-group edit-fields">
+              <label for="windows">Кол-во окон</label>
+              <input required name="weight" type="number" class="form-control" placeholder="Укажите кол-во входов">
+            </div>
+
+
+            <div class="form-group edit-fields">
+              <label for="description">Описание</label>
+              <textarea class="description form-control"></textarea></p>
+            </div>
+	
+
+				<div class="row">
+				
+				  <button type="button" class="btn btn-warning col-lg-2 my-2" onclick="javascript:history.back()">Назад</button>
+				  <div class="col-lg-7"> </div>		
+				  <button type="submit" class="btn btn-success col-lg-3 my-2">Применить</button>
+				  
+				</div>
+          </form>
+      </div>
+    </main>
+
+
+
+  <footer class="footer mt-5 py-2 bg-light">
+    <div class="container">
+      <a class="text-muted" href="https://vk.com/mikh_m">
+        htEvth - 2021 &copy
+        <image src="img/misha.png" class="image-footer" width="30">
+      </a>
+    </div>
+  </footer>
+
+
+  </body>
+</html>
