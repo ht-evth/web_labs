@@ -1,0 +1,51 @@
+﻿{% extends 'mainApp/wrapper.html' %}
+{% load static %}
+
+{% block title %}
+  Каталог
+{% endblock %}
+
+{% block content %}
+
+
+<main id="content">
+    <div class="container">
+        <h1> Каталог</h1>
+        <div class="row">
+
+            {% for singleTent in tents %}
+
+            <div class="col-lg-3 col-md-6 my-2">
+                <div class="card single-item h-100">
+                    <a href="{{ singleTent.get_url }}">
+
+                        {% if singleTent.imagepath.url == "/False" %}
+                        <img src="{% static 'img/empty.png' %}" class="card-img-top" alt="Отсутствует изображение">
+                        {% elif singleTent.imagepath %}
+                        <img src="/static/img{{singleTent.imagepath.url}}" class="card-img-top" alt="{{ singleTent.PK_Tent }}">
+                        {% else %}
+                        <img src="{% static 'img/empty.png' %}" class="card-img-top" alt="Отсутствует изображение">
+                        {% endif %}
+
+                        <div class="card-body">
+                            <h5>Палатка {{ singleTent.name}}</h5>
+                            <h6>Категория: {{ singleTent.PK_Category.name}}</h6>
+                            <p>Цена: {{ singleTent.price }} руб.</p>
+                            <p>Кол-во мест: {{ singleTent.places }}</p>
+                            <p>Вес: {{ singleTent.weight }} кг</p>
+                            <p>Кол-во входов: {{ singleTent.doors }}</p>
+                            <p>Кол-во окон: {{ singleTent.windows }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\mainApp",
+    "\\mainApp\\static\\css",
+    "\\mainApp\\templates",
+    "\\mainApp\\templates\\mainApp",
+    "\\mainApp\\templates\\mainApp\\include",
+    "\\mysite"
+  ],
+  "SelectedNode": "\\mainApp\\views.py",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,68 @@
+﻿{% extends 'mainApp/wrapper.html' %}
+{% load static %}
+
+{% block title %}
+    Подробнее
+{% endblock %}
+
+{% block content %}
+
+<main id="content">
+	<div class="container">
+		<h1>Палатка {{singleTent.name}}</h1>
+		<div class="feature">
+			<h5>Категория: {{singleTent.PK_Category.name}}</h5>
+			<div class="row">
+
+				{% if singleTent.imagepath.url == "/False" %}
+				<img src="{% static 'img/empty.png' %}" class="col-lg-6" alt="Отсутствует изображение">
+				{% elif singleTent.imagepath %}
+				<img src="/static/img{{singleTent.imagepath.url}}" class="col-lg-6" alt="{{ singleTent.PK_Tent }}">
+				{% else %}
+				<img src="{% static 'img/empty.png' %}" class="col-lg-6" alt="Отсутствует изображение">
+				{% endif %}
+
+			</div>
+			<div class="model-info">
+				<p>Производитель: {{singleTent.PK_Brand}}</p>
+				<h5>Цена: {{singleTent.price}} руб.</h5>
+				<p>
+					Описание: {{singleTent.description}}
+				</p>
+
+				<h5>Основные характеристики</h5>
+
+				<table class="table">
+
+					<tbody>
+						<tr>
+							<td>Вес</td>
+							<td>{{singleTent.weight}} кг</td>
+						</tr>
+
+						<tr>
+							<td>Количество мест</td>
+							<td>{{singleTent.places}}</td>
+						</tr>
+
+						<tr>
+							<td>Количество входов</td>
+							<td>{{singleTent.doors}}</td>
+						</tr>
+
+
+						<tr>
+							<td>Кол-во окон, шт</td>
+							<td>{{singleTent.windows}}</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+
+			</div>
+		</div>
+	</div>
+</main>
+
+{% endblock %}
