@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title><%= title %></title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
+
+    <%- include("partials/_header.ejs") %>
+
+    <main id="content">
+      <div class="container">
+
+        <h1><%= title %></h1>
+
+        <form method="POST" enctype="multipart/form-data">
+          <div class="form-group edit-fields">
+            <input type="hidden" name="pk_tent" value="<%= curObj.PK_Tent %>" >
+            <label for="brand">Бренд</label>
+            <select required name="brand" type="text" class="form-control" placeholder="Укажите название бренда">
+              <%for(var i = 0; i < brands.length; i++) {%>
+
+              <option <% if (brands[i].PK_Brand == curObj.PK_Brand) {%> selected <% } %>
+                        id = "PK_Brand" name="PK_Brand" value="<%= brands[i].PK_Brand %>">
+                <%= brands[i].name %>
+              </option>
+              <% } %>
+            </select>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="name">Название</label>
+            <input required name="name" type="string" class="form-control" placeholder="Укажите название палатки" value= <%= curObj.name %>>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="category">Категория</label>
+            <select required name="category" type="text" class="form-control" placeholder="Выберите категорию">
+              <%for(var i = 0; i < categories.length; i++) {%>
+              <option <% if (categories[i].PK_Category == curObj.PK_Category) {%> selected <% } %>
+                        id = "PK_Category" name="PK_Category" value="<%= categories[i].PK_Category %>">
+                <%= categories[i].name %>
+              </option>
+              <% } %>
+            </select>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="price">Цена</label>
+            <input required name="price" type="number" class="form-control" placeholder="Укажите цену" value= <%= curObj.price %>>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="places">Кол-во мест</label>
+            <input required name="places" type="number" class="form-control" placeholder="Введите кол-во мест" value= <%= curObj.places %>>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="weight">Вес</label>
+            <input required name="weight" type="number" class="form-control" placeholder="Укажите вес" value= <%= curObj.weight %>>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="doors">Кол-во входов</label>
+            <input required name="doors" type="number" class="form-control" placeholder="Введите кол-во входов" value= <%= curObj.doors %>>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="windows">Кол-во окон</label>
+            <input required name="windows" type="number" class="form-control" placeholder="Введите кол-во окон" value= <%= curObj.windows %>>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="image_path">Изображение</label>
+            <input name = "wallpaper" type="file" class="chooseFile form-control-file" placeholder="Выберите изображение" value= <%= curObj.image_path %>>
+          </div>
+
+          <div class="form-group edit-fields">
+            <label for="description">Описание</label>
+            <textarea class="description form-control" name="description"><%= curObj.description %></textarea></p>
+          </div>
+
+
+          <div class="btn-group">
+            <button type="submit" class="btn btn-success">Сохранить</button>
+            <button type="button" class="btn btn-default" onclick="javascript:history.back()">Назад</button>
+          </div>
+        </form>
+
+      </div>
+    </main>
+
+
+    <%- include("partials/_footer.ejs") %>
+
+
+  </body>
+</html>

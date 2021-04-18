@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title><%= title %></title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
+
+    <%- include("partials/_header.ejs") %>
+
+
+    <main id="content">
+    	<div class="container">
+    		<h1>Палатка <%= thisTent.name %></h1>
+    		<div class="feature">
+    			<h5>Категория: <%= thisTent.Category.name %></h5>
+    			<div class="row">
+
+    			  <% if (thisTent.image_path) { %>
+              <img src="<%= thisTent.image_path %>" class="col-lg-6" alt="<%= thisTent.PK_Tent %>">
+              <% } else  { %>
+                <img src="img/empty.png" class="col-lg-6" alt="Отсутствует">
+              <% } %>
+
+    			</div>
+    			<div class="model-info">
+    				<p>Производитель: <%= thisTent.Brand.name %></p>
+    				<h5>Цена: <%= thisTent.price %> руб.</h5>
+    				<p>
+    					Описание: <%= thisTent.description %>
+    				</p>
+
+    				<h5>Основные характеристики</h5>
+
+    				<table class="table">
+
+    					<tbody>
+    						<tr>
+    							<td>Вес</td>
+    							<td><%= thisTent.weight %> кг</td>
+    						</tr>
+
+    						<tr>
+    							<td>Количество мест</td>
+    							<td><%= thisTent.places %></td>
+    						</tr>
+
+    						<tr>
+    							<td>Количество входов</td>
+    							<td><%= thisTent.doors %></td>
+    						</tr>
+
+
+    						<tr>
+    							<td>Кол-во окон, шт</td>
+    							<td><%= thisTent.windows %></td>
+    						</tr>
+
+    					</tbody>
+    				</table>
+
+
+    			</div>
+    		</div>
+    	</div>
+    </main>
+
+
+
+
+    <%- include("partials/_footer.ejs") %>
+
+
+  </body>
+</html>

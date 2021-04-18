@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title><%= title %></title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Подключаем шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
+
+
+    <%- include("partials/_header.ejs") %>
+
+    <main id="content">
+      <div class="container">
+        <h1> Каталог</h1>
+        <div class="row">
+
+          <% for (var i = 0; i < tents.length; i+=1) { %>
+
+            <div class="col-lg-3 col-md-6 my-2">
+              <div class="card single-item h-100">
+                <a href="productinfo_<%= tents[i].PK_Tent %>">
+
+                  <% if (tents[i].image_path) {%>
+                    <img src="<%= tents[i].image_path %>" class="card-img-top" alt="">
+                  <% } else {%>
+                    <img src="img/empty.png" class="card-img-top" alt="Отсутствует">
+                  <% } %>
+
+                  <div class="card-body">
+                    <h5>Палатка <%= tents[i].name %></h5>
+                    <h6>Категория: <%= tents[i].Category.name %></h6>
+                    <p>Цена: <%= tents[i].price %> руб.</p>
+                    <p>Кол-во мест: <%= tents[i].places %> </p>
+                    <p>Вес: <%= tents[i].weight %></p>
+                    <p>Кол-во входов: <%= tents[i].doors %> </p>
+                    <p>Кол-во окон: <%= tents[i].windows %> </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+          <% }%>
+
+
+        </div>
+
+      </div>
+    </main>
+
+
+  <%- include("partials/_footer.ejs") %>
+
+  </body>
+</html>
