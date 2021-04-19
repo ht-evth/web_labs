@@ -1,0 +1,30 @@
+{% extends 'mainApp/wrapper.html' %}
+{% load static %}
+{% block title %}{{ titlePage }}{% endblock %}
+{% block content %}
+
+<section class="authentication">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <form method="POST">
+                {% csrf_token %}
+
+                {% for field in form.visible_fields %}
+                <p>
+                    {% if field.label %} {{field.label_tag}} {% endif %}
+                    {{field}}
+                </p>
+                {% endfor %}
+
+                <span>
+                    <button type="submit" class="btn btn-success btn-block my-2">{{titleButton}}</button>
+                </span>
+            </form>
+        </div>
+    </div>
+
+</section>
+<div class="w-50 mx-auto"><h3>{{ error }}</h3> </div>
+
+
+{% endblock %}

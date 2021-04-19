@@ -1,0 +1,36 @@
+{% extends 'mainApp/wrapper.html' %}
+{% load static %}
+{% block title %}Личный кабинет{% endblock %}
+{% block content %}
+
+
+
+
+  <div class="row">
+    <div class="mx-auto">
+      <h3>Личный кабинет {{ user.profile.name}}</h3>
+    </div>
+  </div>
+
+
+<div class="container">
+        <div class="d-flex justify-content-center">
+            <form method="POST">
+                {% csrf_token %}
+
+                {% for field in form.visible_fields %}
+                <p>
+                    {% if field.label %} {{field.label_tag}} {% endif %}
+                    {{field}}
+                </p>
+                {% endfor %}
+
+                <span>
+                    <button type="submit" class="btn btn-success btn-block my-2">Сохранить</button>
+                </span>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

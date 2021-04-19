@@ -1,0 +1,39 @@
+{% extends 'mainApp/wrapper.html' %}
+{% load static %}
+
+{% block title %}
+  {% if pk %}
+    Редактированиее палатки
+  {% else %}
+    Добавить палатку
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<main id="content">
+    <div class="container">
+
+        {% if pk %}
+        <h1>Редактировать палатку:</h1>
+        {% else %}
+        <h1>Добавить палатку: </h1>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {{ form }}
+
+           <div class="row">
+
+                <button type="button" class="btn btn-warning col-lg-2 my-2" onclick="javascript:history.back()">Назад</button>
+                <div class="col-lg-7"> </div>
+                <button type="submit" class="btn btn-success col-lg-3 my-2">Применить</button>
+
+            </div>
+        </form>
+    </div>
+</main>
+
+{% endblock %}

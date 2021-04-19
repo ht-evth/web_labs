@@ -1,0 +1,47 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}">
+        Палатки
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto mb-3 mb-lg-0">
+            <li class="nav-item">
+              <a href="{% url 'index' %}" class="nav-link">Главная</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="{% url 'catalog' %}" class="nav-link">Каталог</a>
+            </li>
+  
+            {% if user.is_superuser %}
+            <li class="nav-item">
+              <a href="{% url 'pageadmin' %}" class="nav-link">Каталог(администрирование)</a>
+            </li>
+            {% endif %}
+  
+            {% if user.is_authenticated %}
+            <div class="nav-item">
+              <a href="{% url 'lk' %}" class="nav-link" >Привет, {{ user.profile.name }}</a>
+            </div>
+            <div class="nav-item">
+              <a href="{% url 'logout' %}" class="nav-link" >Пока, {{ user.profile.name }}</a>
+            </div>
+  
+            {% else %}
+            <div class="nav-item">
+              <a href="{% url 'login' %}" class="nav-link" >Логин</a>
+            </div>
+            <div class="nav-item">
+              <a href="{% url 'registration' %}" class="nav-link" >Регистрация</a>
+            </div>
+            {% endif %}
+          </ul>
+      </div>
+  </div>
+</nav>

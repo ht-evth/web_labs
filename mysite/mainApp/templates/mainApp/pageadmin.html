@@ -1,0 +1,68 @@
+{% extends 'mainApp/wrapper.html' %}
+{% load static %}
+
+{% block title %}
+  Администрирование
+{% endblock %}
+
+{% block content %}
+
+<main id="content">
+    <div class="container py-8">
+        <h1>Администрирование каталога</h1>
+
+        <div class="add-button">
+            <a class="btn btn-success" href="{% url 'createtent' %}" role="button">+ Добавить</a>
+        </div>
+
+        <div class="row">
+
+            {% for singleTent in tents %}
+
+            <div class="col-lg-3 col-md-6 my-2">
+                <div class="card single-item h-100">
+                    <a href="{{ singleTent.get_url }}">
+                        {% if singleTent.imagepath.url == "/False" %}
+                        <img src="{% static 'img/empty.png' %}" class="card-img-top" alt="Отсутствует изображение">
+                        {% elif singleTent.imagepath %}
+                        <img src="{{singleTent.imagepath.url}}" class="card-img-top" alt="{{ singleTent.PK_Tent }}">
+                        {% else %}
+                        <img src="{% static 'img/empty.png' %}" class="card-img-top" alt="Отсутствует изображение">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5>Палатка {{ singleTent.name}}</h5>
+                            <h6>Бренд: {{ singleTent.PK_Brand.name}}</h6>
+                            <h6>Категория: {{ singleTent.PK_Category.name}}</h6>
+                            <p>Цена: {{ singleTent.price }} руб.</p>
+                            <p>Кол-во мест: {{ singleTent.places }}</p>
+                            <p>Вес: {{ singleTent.weight }} кг</p>
+                            <p>Кол-во входов: {{ singleTent.doors }}</p>
+                            <p>Кол-во окон: {{ singleTent.windows }}</p>
+                        </div>
+                    </a>
+                    <div class="card-footer mt-auto">
+                        <div class="col">
+                            <!-- кнопки редактирования и удаления -->
+                            <form class="d-inline" method="POST" action="{% url 'edittent' tentNumber=singleTent.PK_Tent %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-warning edit btn-block my-2">Изменить</button>
+                            </form>
+
+                            <form class="d-inline" method="POST" action="{% url 'deletetent' tentNumber=singleTent.PK_Tent %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger erase btn-block my-2">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+
+
+        </div>
+
+    </div>
+</main>
+{% endblock %}
