@@ -195,7 +195,6 @@ def registration_view(request):
 
     elif request.method == 'POST':
         form = UserRegistrationForm(request.POST)
-
         if form.is_valid():
             form.save()
 

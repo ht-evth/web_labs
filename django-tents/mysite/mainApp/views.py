@@ -5,37 +5,37 @@ from mainApp.forms import TentForm
 
 # Create your views here.
 
-# Создать новый элемент каталога
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 def createtent(request):
-    # создание формы с указанными параметрами
+    # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     if request.method == 'POST':
         form = TentForm(request.POST, request.FILES)
 
-        # сохраняем в бд и возвращаемся обратно на страницу администрирования
+        # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if form.is_valid():            
             newTent = form.save(commit=False)  
             newTent.save()
             return HttpResponseRedirect('/pageadmin')
 
-    # пустая форма
+    # пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
     form = TentForm()
     return render(request, "mainApp/productedit.html", {'form' : form})
 
 
-# редактирование элемента каталога
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 def edittent(request, tentNumber):
 
-    # получаем по первичному ключу элемент
+    # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     tent = Tent.objects.get(PK_Tent = tentNumber)
 
     if request.method == 'POST':
-        # создание формы с указанными параметрами
+        # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         form = TentForm(request.POST, request.FILES)
 
-        # если форма заполнена корректно
+        # пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if form.is_valid():
 
-            # записываем в поля
+            # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ
             tent.PK_Brand = form.cleaned_data["PK_Brand"]
             tent.name = form.cleaned_data["name"]
             tent.PK_Category = form.cleaned_data["PK_Category"]
@@ -47,35 +47,35 @@ def edittent(request, tentNumber):
             tent.description = form.cleaned_data["description"]
             tent.imagepath = form.cleaned_data["imagepath"]
             
-            # сохраняем
+            # пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             tent.save()
             return HttpResponseRedirect('/pageadmin')
 
-    #создание формы с заполнением полей данными модели
+    #пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
     form = TentForm(instance=tent)
     return render(request, "mainApp/productedit.html", {'form' : form, 'pk' : tent.PK_Tent})
 
 
-# главная страница
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 def index(request):
 	return render(request, 'mainApp/index.html')
 
-# каталог
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 def catalog(request):
 	tents = Tent.objects.all()
 	return render(request, 'mainApp/catalog.html', {"tents" : tents})
 
-# администрирование каталога
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 def pageadmin(request):
 	tents = Tent.objects.all() 
 	return render(request, 'mainApp/pageadmin.html', {"tents" : tents})
 
-# подробная информация об элементе каталога
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 def productinfo(request, tentNumber):
     singleTent = Tent.objects.get(PK_Tent=tentNumber)
     return render(request, "mainApp/productinfo.html", {"singleTent" : singleTent})
 
-# Удаление элемента каталога
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 def deletetent(request, tentNumber):
     currentTent = Tent.objects.get(PK_Tent=tentNumber)
     currentTent.delete()
